@@ -1,0 +1,82 @@
+[
+  {
+    "id": "task-001",
+    "title": "Plan the coursework project",
+    "description": "Break the coursework requirements into manageable milestones.",
+    "dueDate": "2026-11-10",
+    "priority": "high",
+    "completed": false
+  },
+  {
+    "id": "task-002",
+    "title": "Set up the React and TypeScript app",
+    "description": "Create the Vite project and install the required dependencies.",
+    "dueDate": "2026-11-12",
+    "priority": "high",
+    "completed": true
+  },
+  {
+    "id": "task-003",
+    "title": "Design the task data model",
+    "description": "Define the fields and TypeScript type used by each task.",
+    "dueDate": "2026-11-14",
+    "priority": "medium",
+    "completed": false
+  },
+  {
+    "id": "task-004",
+    "title": "Build the task list page",
+    "description": "Display tasks with their due dates, priorities and completion states.",
+    "dueDate": "2026-11-17",
+    "priority": "high",
+    "completed": false
+  },
+  {
+    "id": "task-005",
+    "title": "Add task search and filters",
+    "description": "Allow tasks to be searched and filtered by status and priority.",
+    "dueDate": "2026-11-20",
+    "priority": "medium",
+    "completed": false
+  },
+  {
+    "id": "task-006",
+    "title": "Implement task creation form",
+    "description": "Add controlled inputs and inline validation for new tasks.",
+    "dueDate": "2026-11-23",
+    "priority": "high",
+    "completed": false
+  },
+  {
+    "id": "task-007",
+    "title": "Implement task editing",
+    "description": "Pre-fill the form with the selected task before saving changes.",
+    "dueDate": "2026-11-26",
+    "priority": "medium",
+    "completed": false
+  },
+  {
+    "id": "task-008",
+    "title": "Add delete confirmation",
+    "description": "Ask for confirmation before permanently removing a task from the current session.",
+    "dueDate": "2026-11-28",
+    "priority": "low",
+    "completed": false
+  },
+  {
+    "id": "task-009",
+    "title": "Test task workflows",
+    "description": "Write component tests for rendering, validation and task actions.",
+    "dueDate": "2026-12-03",
+    "priority": "high",
+    "completed": false
+  },
+  {
+    "id": "task-010",
+    "title": "Check the mobile layout",
+    "description": "Verify the application at a viewport width of approximately 375 pixels.",
+    "dueDate": "2026-12-08",
+    "priority": "medium",
+    "completed": false
+  }
+]
