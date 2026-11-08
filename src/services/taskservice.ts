@@ -1,5 +1,4 @@
-import { Task } from '../types';
-
+import type { Task } from '../types';
 export const taskService = {
   // Read operation (Fetch all tasks)
   fetchTasks: async (): Promise<Task[]> => {

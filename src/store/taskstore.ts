@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Task } from '../types';
+import type { Task } from '../types';
 import { taskService } from '../services/taskService';
 
 // Store'un içinde hangi verilerin ve fonksiyonların olacağını tanımlıyoruz
