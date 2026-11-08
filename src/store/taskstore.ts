@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import type { Task } from '../types';
 import { taskService } from '../services/taskService';
 
-// Store'un içinde hangi verilerin ve fonksiyonların olacağını tanımlıyoruz
+// Define the shape of the store's state and actions
 interface TaskState {
   tasks: Task[];
   isLoading: boolean;
@@ -10,23 +10,23 @@ interface TaskState {
   loadTasks: () => Promise<void>;
 }
 
-// Zustand hook'umuzu oluşturuyoruz
+// Create the Zustand store hook
 export const useTaskStore = create<TaskState>((set) => ({
   tasks: [],
   isLoading: false,
   error: null,
 
-  // Veriyi çeken ve loading/error durumlarını yöneten aksiyon
+  // Action to fetch data and manage loading/error states
   loadTasks: async () => {
-    // İşlem başlarken loading state'i aktifleştir ve eski hataları temizle
+    // Activate loading state and clear any previous errors before fetching
     set({ isLoading: true, error: null });
     
     try {
       const data = await taskService.fetchTasks();
-      // Veri başarıyla gelirse loading'i kapat ve veriyi kaydet
+      // If successful, save data and disable loading state
       set({ tasks: data, isLoading: false });
     } catch (error) {
-      // Hata olursa loading'i kapat ve hatayı kaydet
+      // If an error occurs, save the error message and disable loading state
       set({ 
         error: error instanceof Error ? error.message : 'An unknown error occurred', 
         isLoading: false 

@@ -6,13 +6,13 @@ export default function App() {
   return (
     <Router>
       <div>
-        {/* Basit bir üst menü (Navigation Bar) */}
+        {/* Simple top navigation bar */}
         <nav style={{ padding: '1rem', backgroundColor: '#f3f4f6', marginBottom: '1rem' }}>
           <Link to="/" style={{ marginRight: '1rem', fontWeight: 'bold', color: '#333', textDecoration: 'none' }}>Dashboard</Link>
           <Link to="/tasks" style={{ fontWeight: 'bold', color: '#333', textDecoration: 'none' }}>Tasks</Link>
         </nav>
 
-        {/* URL'ye göre hangi sayfanın gösterileceğini belirleyen kısım */}
+        {/* Route definitions to render pages based on the current URL */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/tasks" element={<TasksPage />} />
