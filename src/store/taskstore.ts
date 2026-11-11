@@ -17,8 +17,10 @@ interface TaskState {
   setFilterStatus: (status: 'all' | 'completed' | 'pending') => void;
   setFilterPriority: (priority: 'all' | 'low' | 'medium' | 'high') => void;
   
-  // Action to add a new task (omits ID since we generate it)
   addTask: (newTask: Omit<Task, 'id'>) => void;
+  // New actions for toggling status and deleting
+  toggleTaskStatus: (id: string) => void;
+  deleteTask: (id: string) => void;
 }
 
 export const useTaskStore = create<TaskState>((set) => ({
@@ -47,12 +49,23 @@ export const useTaskStore = create<TaskState>((set) => ({
   setFilterStatus: (status) => set({ filterStatus: status }),
   setFilterPriority: (priority) => set({ filterPriority: priority }),
 
-  // Add a new task to the beginning of the list with an auto-generated ID
   addTask: (newTask) => set((state) => {
     const taskWithId: Task = {
       ...newTask,
-      id: crypto.randomUUID(), // Generate a unique ID natively
+      id: crypto.randomUUID(),
     };
     return { tasks: [taskWithId, ...state.tasks] };
   }),
+
+  // Map over tasks, flip the completed boolean if the ID matches
+  toggleTaskStatus: (id) => set((state) => ({
+    tasks: state.tasks.map((task) => 
+      task.id === id ? { ...task, completed: !task.completed } : task
+    )
+  })),
+
+  // Filter out the task that matches the ID to delete it
+  deleteTask: (id) => set((state) => ({
+    tasks: state.tasks.filter((task) => task.id !== id)
+  })),
 }));
