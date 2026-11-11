@@ -1,3 +1,10 @@
+## AI Tools Declaration
+
+All core logic, architecture, and implementation were written independently by me. 
+
+*   **Gemini (Google):** Used strictly as a learning assistant and debugging tool. I sought help to understand Vite/TypeScript module resolution errors (specifically the `import type` requirement) and to verify my understanding of Zustand state management. 
+*   **Influence:** The AI influenced less than 5% of the submitted codebase, limited almost entirely to syntax debugging, conceptual explanations, and standardizing English inline comments.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
