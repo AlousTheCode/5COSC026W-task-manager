@@ -43,7 +43,10 @@ export default function TasksPage() {
   return (
     <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
       <h1 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Task Management</h1>
-      
+         
+         <div style={{ backgroundColor: '#fffbeb', color: '#b45309', padding: '1rem', borderRadius: '4px', marginBottom: '2rem', border: '1px solid #fde68a' }}>
+        <strong>Note:</strong> Since this application uses simulated authentication and client-side data (JSON), any tasks created, updated, or deleted will be reset when you refresh the page.
+      </div>
       <TaskForm />
       
       <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
