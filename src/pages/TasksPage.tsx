@@ -1,65 +1,51 @@
 import { useEffect } from 'react';
 import { useTaskStore } from '../store/taskStore';
+import TaskForm from '../components/TaskForm'; // <-- IMPORTED NEW COMPONENT
 
 export default function TasksPage() {
-  // 1. Extract data, filters, and actions from the Zustand store
   const { 
     tasks, isLoading, error, loadTasks,
     searchQuery, filterStatus, filterPriority,
     setSearchQuery, setFilterStatus, setFilterPriority
   } = useTaskStore();
 
-  // 2. Fetch tasks when component mounts
   useEffect(() => {
     loadTasks();
   }, [loadTasks]);
 
-  // 3. Compute filtered tasks based on current filter states
   const filteredTasks = tasks.filter((task) => {
-    // Search match (case-insensitive for both title and description)
     const matchesSearch = task.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           task.description.toLowerCase().includes(searchQuery.toLowerCase());
     
-    // Status match
     const matchesStatus = filterStatus === 'all' 
       ? true 
       : filterStatus === 'completed' 
         ? task.completed 
         : !task.completed;
         
-    // Priority match
     const matchesPriority = filterPriority === 'all' 
       ? true 
       : task.priority === filterPriority;
 
-    // A task must pass all conditions to be displayed
     return matchesSearch && matchesStatus && matchesPriority;
   });
 
-  // 4. Handle loading state
   if (isLoading) {
-    return (
-      <div style={{ padding: '2rem', textAlign: 'center', fontSize: '1.2rem' }}>
-        Loading tasks... Please wait.
-      </div>
-    );
+    return <div style={{ padding: '2rem', textAlign: 'center', fontSize: '1.2rem' }}>Loading tasks... Please wait.</div>;
   }
 
-  // 5. Handle error state
   if (error) {
-    return (
-      <div style={{ padding: '2rem', color: 'red', textAlign: 'center' }}>
-        <strong>Error:</strong> {error}
-      </div>
-    );
+    return <div style={{ padding: '2rem', color: 'red', textAlign: 'center' }}><strong>Error:</strong> {error}</div>;
   }
 
-  // 6. Render the UI
   return (
-    <div style={{ padding: '2rem' }}>
+    <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
       <h1 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Task Management</h1>
       
-      {/* Filter and Search Controls */}
+      {/* 1. Render the newly created Task Form */}
+      <TaskForm />
+      
+      {/* 2. Filter and Search Controls */}
       <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
         <input 
           type="text" 
@@ -91,7 +77,7 @@ export default function TasksPage() {
         </select>
       </div>
 
-      {/* Filtered Task List */}
+      {/* 3. Filtered Task List */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         {filteredTasks.length === 0 ? (
           <p style={{ textAlign: 'center', color: '#6b7280', padding: '2rem' }}>
